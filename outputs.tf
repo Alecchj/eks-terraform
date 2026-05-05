@@ -18,10 +18,10 @@ output "region" {
 
 output "cluster_name" {
   description = "Kubernetes Cluster Name"
-  value       = module.eks.name
+  value       = module.eks.cluster_name
 }
 
 output "cluster_version" {
   description = "Kubernetes Cluster Version"
-  value       = module.eks.kubernetes_version
+  value       = module.eks.cluster_version
 }
