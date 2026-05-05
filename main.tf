@@ -44,7 +44,7 @@ module "eks" {
   version = "21.19.0"
 
   name = var.cluster_name
-  kubernetes_version = "1.30"
+  kubernetes_version = "1.35"
   create_cloudwatch_log_group = false
 
   endpoint_public_access = true
@@ -58,9 +58,9 @@ module "eks" {
     one = {
       name = "node-group-1"
 
-      instance_types = ["t4g.nano"]
-      ami_type = "AL2_ARM_64"
-      capacity_type = "SPOT"
+      instance_types = ["t3.small"]
+      # ami_type = "AL2_ARM_64"
+      # capacity_type = "SPOT"
 
       min_size     = 1
       max_size     = 1
