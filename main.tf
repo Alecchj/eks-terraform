@@ -21,10 +21,10 @@ module "vpc" {
   name = "viet-vpc"
 
   cidr = "10.49.0.0/16"
-  azs  = slice(data.aws_availability_zones.available.names, 0, 1)
+  azs  = slice(data.aws_availability_zones.available.names, 0, 2)
 
-  private_subnets = ["10.49.53.0/24"]
-  public_subnets  = ["10.49.54.0/24"]
+  private_subnets = ["10.49.53.0/24","10.49.54.0/24"]
+  public_subnets  = ["10.49.64.0/24","10.49.65.0/24"]
 
   enable_nat_gateway   = true
   single_nat_gateway   = true
@@ -44,7 +44,8 @@ module "eks" {
   version = "21.19.0"
 
   name = var.cluster_name
-  kubernetes_version = "1.35"
+  kubernetes_version = "1.30"
+  create_cloudwatch_log_group = false
 
   endpoint_public_access = true
   endpoint_public_access_cidrs = ["171.224.177.142/32"]
